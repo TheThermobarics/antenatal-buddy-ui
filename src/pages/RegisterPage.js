@@ -10,6 +10,8 @@ const RegisterPage = ({ register, isAuthenticated }) => {
     password: "",
   });
 
+  const [isDoctor, setIsDoctor] = useState(false);
+
   const { name, email, password } = formData;
 
   const onChange = (e) =>
@@ -17,8 +19,13 @@ const RegisterPage = ({ register, isAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    register({ name, email, password });
-    console.log({ name, email, password });
+    if (isDoctor) {
+      register({ name, email, password, role: "doctor" });
+    } else {
+      register({ name, email, password });
+    }
+
+    console.log({ name, email, password, isDoctor });
   };
 
   if (isAuthenticated) {
@@ -208,8 +215,18 @@ const RegisterPage = ({ register, isAuthenticated }) => {
               <div className="flex justify-between w-full px-3">
                 <div className="md:flex md:items-center">
                   <label className="block text-gray-500 font-bold">
-                    <input className="mr-2 leading-tight" type="checkbox" />
-                    <span className="text-sm">Agree</span>
+                    <input
+                      name="isDoctor"
+                      value={isDoctor}
+                      onChange={(e) => {
+                        console.log("---------------");
+                        setIsDoctor(!isDoctor);
+                        console.log(isDoctor);
+                      }}
+                      className="mr-2 leading-tight"
+                      type="checkbox"
+                    />
+                    <span className="text-sm">I am a Doctor</span>
                   </label>
                 </div>
                 <button

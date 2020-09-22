@@ -3,6 +3,8 @@ import { Transition } from "@tailwindui/react";
 import { logout } from "../actions/auth";
 import { connect } from "react-redux";
 
+import MetaData from "../components/DashboardComponents/MetaData";
+
 const Dashboard = ({ logout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(true);
@@ -275,6 +277,7 @@ const Dashboard = ({ logout }) => {
             </div>
           </div>
         </main>
+        <MetaData />
       </div>
     </>
   );
