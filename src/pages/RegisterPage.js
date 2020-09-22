@@ -148,7 +148,9 @@ const RegisterPage = ({ register, isAuthenticated }) => {
                   </g>
                 </g>
               </svg>
-              <span className="text-sm">24/7</span>
+              <Link to="/" className="text-sm font-extrabold">
+                Go Back
+              </Link>
             </div>
           </div>
           <form className="md:col-span-8 p-10" onSubmit={(e) => onSubmit(e)}>
