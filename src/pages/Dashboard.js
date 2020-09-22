@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { Transition } from "@tailwindui/react";
+import { logout } from "../actions/auth";
+import { connect } from "react-redux";
 
-const Dashboard = () => {
+const Dashboard = ({ logout }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   return (
     <>
       <div>
@@ -28,21 +34,7 @@ const Dashboard = () => {
                       href="#"
                       class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                     >
-                      Team
-                    </a>
-
-                    <a
-                      href="#"
-                      class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                    >
-                      Projects
-                    </a>
-
-                    <a
-                      href="#"
-                      class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-                    >
-                      Calendar
+                      Doctors
                     </a>
 
                     <a
@@ -50,6 +42,20 @@ const Dashboard = () => {
                       class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                     >
                       Reports
+                    </a>
+
+                    <a
+                      href="#"
+                      class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                    >
+                      Appointments
+                    </a>
+
+                    <a
+                      href="#"
+                      class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                    >
+                      Diagnosis
                     </a>
                   </div>
                 </div>
@@ -75,7 +81,7 @@ const Dashboard = () => {
                     </svg>
                   </button>
 
-                  <div class="ml-3 relative">
+                  <div class="ml-3 relative" onClick={() => setIsOpen(!isOpen)}>
                     <div>
                       <button
                         class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid"
@@ -90,46 +96,59 @@ const Dashboard = () => {
                         />
                       </button>
                     </div>
-
-                    <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                      <div
-                        class="py-1 rounded-md bg-white shadow-xs"
-                        role="menu"
-                        aria-orientation="vertical"
-                        aria-labelledby="user-menu"
-                      >
-                        <a
-                          href="#"
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          role="menuitem"
+                    <Transition
+                      show={isOpen}
+                      enter="transition ease-out duration-100 transform"
+                      enterFrom="opacity-0 scale-95"
+                      enterTo="opacity-100 scale-100"
+                      leave="transition ease-in duration-75 transform"
+                      leaveFrom="opacity-100 scale-100"
+                      leaveTo="opacity-0 scale-95"
+                    >
+                      <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+                        <div
+                          class="py-1 rounded-md bg-white shadow-xs"
+                          role="menu"
+                          aria-orientation="vertical"
+                          aria-labelledby="user-menu"
                         >
-                          Your Profile
-                        </a>
+                          <a
+                            href="#"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem"
+                          >
+                            Your Profile
+                          </a>
 
-                        <a
-                          href="#"
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          role="menuitem"
-                        >
-                          Settings
-                        </a>
+                          <a
+                            href="#"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem"
+                          >
+                            Settings
+                          </a>
 
-                        <a
-                          href="#"
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          role="menuitem"
-                        >
-                          Sign out
-                        </a>
+                          <a
+                            href="#"
+                            onClick={logout}
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem"
+                          >
+                            Sign out
+                          </a>
+                        </div>
                       </div>
-                    </div>
+                    </Transition>
                   </div>
                 </div>
               </div>
               <div class="-mr-2 flex md:hidden">
-                <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+                >
                   <svg
-                    class="block h-6 w-6"
+                    class={!dropdownOpen ? "hidden h-6 w-6" : "block h-6 w-6"}
                     stroke="currentColor"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -143,7 +162,7 @@ const Dashboard = () => {
                   </svg>
 
                   <svg
-                    class="hidden h-6 w-6"
+                    class={dropdownOpen ? "hidden h-6 w-6" : "block h-6 w-6"}
                     stroke="currentColor"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -160,7 +179,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div class="hidden md:hidden">
+          <div class={dropdownOpen ? "hidden md:hidden" : "block md:hidden"}>
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a
                 href="#"
@@ -232,6 +251,7 @@ const Dashboard = () => {
 
                 <a
                   href="#"
+                  onClick={logout}
                   class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                 >
                   Sign out
@@ -260,4 +280,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default connect(null, { logout })(Dashboard);
