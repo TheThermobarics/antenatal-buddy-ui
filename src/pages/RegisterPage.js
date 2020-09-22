@@ -1,23 +1,24 @@
 import React, { Fragment, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { login } from "../actions/auth";
+import { register } from "../actions/auth";
 
-const LoginPage = ({ login, isAuthenticated }) => {
+const RegisterPage = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
-    name: "",
   });
 
-  const { email, password, name } = formData;
+  const { name, email, password } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
+    register({ name, email, password });
+    console.log({ name, email, password });
   };
 
   if (isAuthenticated) {
@@ -30,10 +31,10 @@ const LoginPage = ({ login, isAuthenticated }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 border">
           <div className="bg-gray-900 md:col-span-4 p-10 text-white">
             <p className="mt-4 text-sm leading-7 font-regular uppercase">
-              Login
+              Register
             </p>
             <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight">
-              Welcome <span className="text-indigo-600">Back</span>
+              Welcome <span className="text-indigo-600">To the App</span>
             </h3>
             <p className="mt-4 leading-7 text-gray-200">
               Our endeavour to enhance the communication between doctors and
@@ -215,7 +216,7 @@ const LoginPage = ({ login, isAuthenticated }) => {
                   className="shadow bg-indigo-600 hover:bg-indigo-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
                   type="submit"
                 >
-                  Login
+                  Register
                 </button>
               </div>
             </div>
@@ -230,4 +231,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { login })(LoginPage);
+export default connect(mapStateToProps, { register })(RegisterPage);

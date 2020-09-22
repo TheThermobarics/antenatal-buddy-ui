@@ -5,25 +5,25 @@ import "./Features.css";
 const Features = () => {
   return (
     <>
-      <div class="py-24 bg-white">
-        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="lg:text-center">
-            <p class="mt-4 max-w-2xl text-lg leading-7 text-gray-500 lg:mx-auto font-regular">
+      <div className="py-24 bg-white">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:text-center">
+            <p className="mt-4 max-w-2xl text-lg leading-7 text-gray-500 lg:mx-auto font-regular">
               Features
             </p>
-            <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-              Our <span class="text-indigo-600">Features</span>
+            <h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+              Our <span className="text-indigo-600">Features</span>
             </h3>
           </div>
 
-          <div class="mt-24">
-            <ul class="md:grid md:grid-cols-2 lg:grid-cols-3 md:col-gap-8 md:row-gap-10">
-              <li class="my-10 md:mt-0">
-                <div class="flex">
-                  <div class="flex-shrink-0">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
+          <div className="mt-24">
+            <ul className="md:grid md:grid-cols-2 lg:grid-cols-3 md:col-gap-8 md:row-gap-10">
+              <li className="my-10 md:mt-0">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
                       <svg
-                        class="h-10 w-10"
+                        className="h-10 w-10"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -37,11 +37,11 @@ const Features = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="ml-4">
-                    <h4 class="text-lg leading-6 font-medium text-gray-900">
+                  <div className="ml-4">
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">
                       Feature Name
                     </h4>
-                    <p class="mt-2 text-base leading-6 text-gray-500">
+                    <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                       Maiores impedit perferendis suscipit eaque, iste dolor
                       cupiditate blanditiis ratione.
@@ -49,12 +49,12 @@ const Features = () => {
                   </div>
                 </div>
               </li>
-              <li class="my-10 md:mt-0">
-                <div class="flex">
-                  <div class="flex-shrink-0">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
+              <li className="my-10 md:mt-0">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
                       <svg
-                        class="h-10 w-10"
+                        className="h-10 w-10"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -68,11 +68,11 @@ const Features = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="ml-4">
-                    <h4 class="text-lg leading-6 font-medium text-gray-900">
+                  <div className="ml-4">
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">
                       Feature Name
                     </h4>
-                    <p class="mt-2 text-base leading-6 text-gray-500">
+                    <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                       Maiores impedit perferendis suscipit eaque, iste dolor
                       cupiditate blanditiis ratione.
@@ -80,12 +80,12 @@ const Features = () => {
                   </div>
                 </div>
               </li>
-              <li class="my-10 md:mt-0">
-                <div class="flex">
-                  <div class="flex-shrink-0">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
+              <li className="my-10 md:mt-0">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
                       <svg
-                        class="h-10 w-10"
+                        className="h-10 w-10"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -99,11 +99,11 @@ const Features = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="ml-4">
-                    <h4 class="text-lg leading-6 font-medium text-gray-900">
+                  <div className="ml-4">
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">
                       Feature Name
                     </h4>
-                    <p class="mt-2 text-base leading-6 text-gray-500">
+                    <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                       Maiores impedit perferendis suscipit eaque, iste dolor
                       cupiditate blanditiis ratione.
@@ -111,12 +111,12 @@ const Features = () => {
                   </div>
                 </div>
               </li>
-              <li class="my-10 md:mt-0">
-                <div class="flex">
-                  <div class="flex-shrink-0">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
+              <li className="my-10 md:mt-0">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
                       <svg
-                        class="h-10 w-10"
+                        className="h-10 w-10"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -130,11 +130,11 @@ const Features = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="ml-4">
-                    <h4 class="text-lg leading-6 font-medium text-gray-900">
+                  <div className="ml-4">
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">
                       Feature Name
                     </h4>
-                    <p class="mt-2 text-base leading-6 text-gray-500">
+                    <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                       Maiores impedit perferendis suscipit eaque, iste dolor
                       cupiditate blanditiis ratione.
@@ -142,12 +142,12 @@ const Features = () => {
                   </div>
                 </div>
               </li>
-              <li class="my-10 md:mt-0">
-                <div class="flex">
-                  <div class="flex-shrink-0">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
+              <li className="my-10 md:mt-0">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
                       <svg
-                        class="h-10 w-10"
+                        className="h-10 w-10"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -161,11 +161,11 @@ const Features = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="ml-4">
-                    <h4 class="text-lg leading-6 font-medium text-gray-900">
+                  <div className="ml-4">
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">
                       Feature Name
                     </h4>
-                    <p class="mt-2 text-base leading-6 text-gray-500">
+                    <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                       Maiores impedit perferendis suscipit eaque, iste dolor
                       cupiditate blanditiis ratione.
@@ -173,12 +173,12 @@ const Features = () => {
                   </div>
                 </div>
               </li>
-              <li class="my-10 md:mt-0">
-                <div class="flex">
-                  <div class="flex-shrink-0">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
+              <li className="my-10 md:mt-0">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md text-indigo-500">
                       <svg
-                        class="h-10 w-10"
+                        className="h-10 w-10"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -192,11 +192,11 @@ const Features = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="ml-4">
-                    <h4 class="text-lg leading-6 font-medium text-gray-900">
+                  <div className="ml-4">
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">
                       Feature Name
                     </h4>
-                    <p class="mt-2 text-base leading-6 text-gray-500">
+                    <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                       Maiores impedit perferendis suscipit eaque, iste dolor
                       cupiditate blanditiis ratione.
