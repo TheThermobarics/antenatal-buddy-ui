@@ -12,7 +12,7 @@ const Features = () => {
               Features
             </p>
             <h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-              Our <span className="text-indigo-600">Features</span>
+              What <span className="text-indigo-600">We Offer</span>
             </h3>
           </div>
 
@@ -39,12 +39,11 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg leading-6 font-medium text-gray-900">
-                      Feature Name
+                      Online Registration
                     </h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Maiores impedit perferendis suscipit eaque, iste dolor
-                      cupiditate blanditiis ratione.
+                      Both patients and Doctors can register to a common
+                      platform suitable for enhanced communication
                     </p>
                   </div>
                 </div>
@@ -70,12 +69,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg leading-6 font-medium text-gray-900">
-                      Feature Name
+                      Appointment Schedule
                     </h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Maiores impedit perferendis suscipit eaque, iste dolor
-                      cupiditate blanditiis ratione.
+                      A hassle-free online schedule of booking appointments
                     </p>
                   </div>
                 </div>
@@ -101,12 +98,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg leading-6 font-medium text-gray-900">
-                      Feature Name
+                      Video consultation
                     </h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Maiores impedit perferendis suscipit eaque, iste dolor
-                      cupiditate blanditiis ratione.
+                      Remote consultations to keep up with the covid times
                     </p>
                   </div>
                 </div>
@@ -132,12 +127,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg leading-6 font-medium text-gray-900">
-                      Feature Name
+                      E-Prescription
                     </h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Maiores impedit perferendis suscipit eaque, iste dolor
-                      cupiditate blanditiis ratione.
+                      An online paperless prescription service
                     </p>
                   </div>
                 </div>
@@ -163,12 +156,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg leading-6 font-medium text-gray-900">
-                      Feature Name
+                      Home Delivery of Drugs
                     </h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Maiores impedit perferendis suscipit eaque, iste dolor
-                      cupiditate blanditiis ratione.
+                      Get your medecines delivered to your doorstep
                     </p>
                   </div>
                 </div>
@@ -194,12 +185,11 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg leading-6 font-medium text-gray-900">
-                      Feature Name
+                      Oral Health Awareness
                     </h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Maiores impedit perferendis suscipit eaque, iste dolor
-                      cupiditate blanditiis ratione.
+                      Daily updates about oral hygiene along with the best
+                      practices by experienced doctors
                     </p>
                   </div>
                 </div>

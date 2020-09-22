@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 const Dashboard = ({ logout }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(true);
 
   return (
     <>
