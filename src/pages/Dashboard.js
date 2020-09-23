@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { Transition } from "@tailwindui/react";
-import { logout } from "../actions/auth";
+import React, { useEffect } from "react";
+import { getAllDoctors } from "../actions/patient";
 import { connect } from "react-redux";
 
 import Navbar from "../components/DashboardComponents/Navbar";
@@ -8,10 +7,11 @@ import Navbar from "../components/DashboardComponents/Navbar";
 import DoctorCard from "./../components/Cards/DoctorCard";
 import MetaData from "../components/DashboardComponents/MetaData";
 
-const Dashboard = ({ logout }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(true);
-
+const Dashboard = ({ getAllDoctors, patient: { doctors } }) => {
+  useEffect(() => {
+    getAllDoctors();
+    console.log(doctors);
+  }, [getAllDoctors]);
   return (
     <>
       <div>
@@ -32,13 +32,24 @@ const Dashboard = ({ logout }) => {
                   Top Doctors
                 </h2>
                 <p class="max-w-xl mb-8 text-gray-500">
-                  Book an appointment with the following or search for the ones
-                  that suit your medical needs
+                  {doctors !== null
+                    ? "Book an appointment with the following or search for the ones that suit your medical needs"
+                    : "Loading top doctors...."}
                 </p>
                 <div class="flex flex-wrap -mx-4 text-center">
-                  <DoctorCard />
-                  <DoctorCard />
-                  <DoctorCard />
+                  {doctors !== null &&
+                    doctors.map(
+                      (doctor, idx) =>
+                        idx < 3 && (
+                          <DoctorCard
+                            key={doctor._id}
+                            name={doctor.name}
+                            aboutMe={doctor.aboutMe}
+                            specialization={doctor.specialization}
+                            doctorId={doctor._id}
+                          />
+                        )
+                    )}
                 </div>
               </section>
             </div>
@@ -50,4 +61,8 @@ const Dashboard = ({ logout }) => {
   );
 };
 
-export default connect(null, { logout })(Dashboard);
+const mapStateToProps = (state) => ({
+  patient: state.patient,
+});
+
+export default connect(mapStateToProps, { getAllDoctors })(Dashboard);

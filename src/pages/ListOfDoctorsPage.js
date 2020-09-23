@@ -34,6 +34,7 @@ const ListOfDoctorsPage = ({ getAllDoctors, patient: { doctors } }) => {
                     name={doctor.name}
                     aboutMe={doctor.aboutMe}
                     specialization={doctor.specialization}
+                    doctorId={doctor._id}
                   />
                 ))}
             </div>

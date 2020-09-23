@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ListOfDoctorsPage from "./pages/ListOfDoctorsPage";
+import MakeAppointment from "./pages/MakeAppointment";
 
 import PrivateRoute from "./components/routing/PrivateRoute";
 
@@ -36,6 +37,11 @@ function App() {
           exact
           path="/dashboard/doctors"
           component={ListOfDoctorsPage}
+        />
+        <PrivateRoute
+          exact
+          path="/makeappointment/:docid"
+          component={MakeAppointment}
         />
       </Router>
     </Provider>

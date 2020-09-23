@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { getAllAppointments } from "../../actions/patient";
+import { connect } from "react-redux";
+
 import AppointmentCard from "../Cards/AppointmentCard";
 import PrescriptionCard from "../Cards/PrescriptionCard";
 
 import "./MetaData.css";
 
-const MetaData = () => {
+const MetaData = ({ getAllAppointments, patient: { appointments }, user }) => {
+  useEffect(() => {
+    if (user) {
+      getAllAppointments(user.data._id);
+      console.log(appointments);
+    }
+  }, [getAllAppointments, user]);
   return (
     <>
       <div class="min-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 py-5">
@@ -19,7 +28,12 @@ const MetaData = () => {
                 DATE : THURSDAY 6 AUGUST
               </p>
             </div>
-            <AppointmentCard />
+
+            {appointments.length === 0
+              ? "You can book an appointment with a doctor of your choosing"
+              : appointments.map((appointment) => (
+                  <AppointmentCard appointment={appointment} />
+                ))}
 
             <div class="mb-3">
               <h1 class="text-3xl font-bold">Prescriptions</h1>
@@ -35,4 +49,9 @@ const MetaData = () => {
   );
 };
 
-export default MetaData;
+const mapStateToProps = (state) => ({
+  patient: state.patient,
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps, { getAllAppointments })(MetaData);
