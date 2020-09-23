@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ListOfDoctorsPage from "./pages/ListOfDoctorsPage";
 
 import PrivateRoute from "./components/routing/PrivateRoute";
 
@@ -31,6 +32,11 @@ function App() {
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/register" component={RegisterPage} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute
+          exact
+          path="/dashboard/doctors"
+          component={ListOfDoctorsPage}
+        />
       </Router>
     </Provider>
   );
