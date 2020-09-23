@@ -3,6 +3,7 @@ import { Transition } from "@tailwindui/react";
 import { logout } from "../actions/auth";
 import { connect } from "react-redux";
 
+import DoctorCard from "./../components/Cards/DoctorCard";
 import MetaData from "../components/DashboardComponents/MetaData";
 
 const Dashboard = ({ logout }) => {
@@ -273,7 +274,20 @@ const Dashboard = ({ logout }) => {
         <main>
           <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <div class="px-4 py-6 sm:px-0">
-              <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+              <section class="pt-8 px-4 pb-4">
+                <h2 class="text-4xl mb-2 leading-tight font-heading">
+                  Top Doctors
+                </h2>
+                <p class="max-w-xl mb-8 text-gray-500">
+                  Book an appointment with the following or search for the ones
+                  that suit your medical needs
+                </p>
+                <div class="flex flex-wrap -mx-4 text-center">
+                  <DoctorCard />
+                  <DoctorCard />
+                  <DoctorCard />
+                </div>
+              </section>
             </div>
           </div>
         </main>
