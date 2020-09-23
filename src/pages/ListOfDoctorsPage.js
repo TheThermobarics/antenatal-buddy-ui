@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+
+import { getAllDoctors } from "../actions/patient";
 
 import Navbar from "../components/DashboardComponents/Navbar";
 import DoctorCard from "../components/Cards/DoctorCard";
 
-const ListOfDoctorsPage = () => {
+const ListOfDoctorsPage = ({ getAllDoctors, patient: { doctors } }) => {
+  useEffect(() => {
+    getAllDoctors();
+    console.log(doctors);
+  }, [getAllDoctors]);
   return (
     <>
       <Navbar />
@@ -15,15 +22,20 @@ const ListOfDoctorsPage = () => {
               List of Doctors
             </h2>
             <p class="max-w-xl mb-8 text-gray-500">
-              Book an appointment with any of the following
+              {doctors !== null
+                ? "Book an appointment with any of the following"
+                : "Fetching Doctors......"}
             </p>
             <div class="flex flex-wrap -mx-4 text-center">
-              <DoctorCard />
-              <DoctorCard />
-              <DoctorCard />
-              <DoctorCard />
-              <DoctorCard />
-              <DoctorCard />
+              {doctors !== null &&
+                doctors.map((doctor) => (
+                  <DoctorCard
+                    key={doctor._id}
+                    name={doctor.name}
+                    aboutMe={doctor.aboutMe}
+                    specialization={doctor.specialization}
+                  />
+                ))}
             </div>
           </section>
         </div>
@@ -32,4 +44,8 @@ const ListOfDoctorsPage = () => {
   );
 };
 
-export default ListOfDoctorsPage;
+const mapStateToProps = (state) => ({
+  patient: state.patient,
+});
+
+export default connect(mapStateToProps, { getAllDoctors })(ListOfDoctorsPage);
