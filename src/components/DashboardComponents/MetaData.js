@@ -29,11 +29,10 @@ const MetaData = ({ getAllAppointments, patient: { appointments }, user }) => {
               </p>
             </div>
 
-            {appointments.length === 0
-              ? "You can book an appointment with a doctor of your choosing"
-              : appointments.map((appointment) => (
-                  <AppointmentCard appointment={appointment} />
-                ))}
+            {appointments.length !== 0 &&
+              appointments.map((appointment) => (
+                <AppointmentCard appointment={appointment} />
+              ))}
 
             <div class="mb-3">
               <h1 class="text-3xl font-bold">Prescriptions</h1>

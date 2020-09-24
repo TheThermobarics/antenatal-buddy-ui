@@ -36,7 +36,7 @@ const AppointmentCard = ({
           {reason}
         </h2>
         <h2 className="text-white text-2xl font-bold leading-tight mb-3 pr-5">
-          Hospital&nbsp;Name
+          Hospital&nbsp;: {doctor.hospital}
         </h2>
         <div className="flex w-full items-center text-sm text-gray-300 font-medium">
           <div className="flex-1 flex items-center">

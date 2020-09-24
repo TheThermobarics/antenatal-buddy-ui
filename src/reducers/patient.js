@@ -4,6 +4,7 @@ import {
   GET_APPOINTMENTS,
   GET_APPOINTMENTS_FAIL,
   MAKE_APPOINTMENT,
+  CLEAR_APPOINTMENTS,
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +28,8 @@ export default function (state = initialState, action) {
       return { ...state, appointments: null };
     case MAKE_APPOINTMENT:
       return { ...state, appointments: [payload.data, ...state.appointments] };
+    case CLEAR_APPOINTMENTS:
+      return { ...state, appointments: [] };
     default:
       return state;
   }

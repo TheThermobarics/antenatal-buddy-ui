@@ -9,6 +9,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  CLEAR_APPOINTMENTS,
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
@@ -95,6 +96,12 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const logout = () => (dispatch) => {
-  dispatch({ type: LOGOUT });
+export const logout = () => async (dispatch) => {
+  try {
+    await axios.get(API_BASE_URL + "auth/logout");
+    dispatch({ type: CLEAR_APPOINTMENTS });
+    dispatch({ type: LOGOUT });
+  } catch (error) {
+    console.log(error);
+  }
 };

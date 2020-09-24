@@ -1,13 +1,20 @@
 import React, { useEffect } from "react";
 import { getAllDoctors } from "../actions/patient";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import Navbar from "../components/DashboardComponents/Navbar";
 
 import DoctorCard from "./../components/Cards/DoctorCard";
 import MetaData from "../components/DashboardComponents/MetaData";
 
-const Dashboard = ({ getAllDoctors, patient: { doctors } }) => {
+const Dashboard = ({ getAllDoctors, patient: { doctors }, user }) => {
+  let history = useHistory();
+  useEffect(() => {
+    if (user && user.data.role === "doctor") {
+      history.push("/doctor/dashboard");
+    }
+  }, []);
   useEffect(() => {
     getAllDoctors();
     console.log(doctors);
@@ -63,6 +70,7 @@ const Dashboard = ({ getAllDoctors, patient: { doctors } }) => {
 
 const mapStateToProps = (state) => ({
   patient: state.patient,
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps, { getAllDoctors })(Dashboard);
