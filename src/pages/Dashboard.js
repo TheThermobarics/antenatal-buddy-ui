@@ -1,24 +1,30 @@
 import React, { useEffect } from "react";
 import { getAllDoctors } from "../actions/patient";
+import { loadUser } from "../actions/auth";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 import Navbar from "../components/DashboardComponents/Navbar";
 
 import DoctorCard from "./../components/Cards/DoctorCard";
 import MetaData from "../components/DashboardComponents/MetaData";
 
-const Dashboard = ({ getAllDoctors, patient: { doctors }, user }) => {
+const Dashboard = ({ getAllDoctors, patient: { doctors }, user, loadUser }) => {
   let history = useHistory();
-  //   useEffect(() => {
-  //     if (user && user.data.role === "doctor") {
-  //       history.push("/doctor/dashboard");
-  //     }
-  //   }, []);
+  useEffect(() => {
+    // loadUser();
+    console.log("----------user------------------");
+    console.log(user);
+  }, [user]);
   useEffect(() => {
     getAllDoctors();
     console.log(doctors);
   }, [getAllDoctors]);
+
+  if (user && user.data.role === "doctor") {
+    return <Redirect to="/doctor/dashboard" />;
+  }
+
   return (
     <>
       <div>
@@ -73,4 +79,4 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { getAllDoctors })(Dashboard);
+export default connect(mapStateToProps, { getAllDoctors, loadUser })(Dashboard);
