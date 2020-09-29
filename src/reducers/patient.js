@@ -27,7 +27,7 @@ export default function (state = initialState, action) {
     case GET_APPOINTMENTS_FAIL:
       return { ...state, appointments: null };
     case MAKE_APPOINTMENT:
-      return { ...state, appointments: [payload.data, ...state.appointments] };
+      return { ...state, appointments: [payload, ...state.appointments] };
     case CLEAR_APPOINTMENTS:
       return { ...state, appointments: [] };
     default:

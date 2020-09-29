@@ -24,12 +24,11 @@ const RegisterPage = ({ register, isAuthenticated }) => {
     } else {
       register({ name, email, password });
     }
-
     console.log({ name, email, password, isDoctor });
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/login" />;
   }
 
   return (

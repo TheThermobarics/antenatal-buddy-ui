@@ -64,7 +64,7 @@ export const makeAppointment = (formData) => async (dispatch) => {
     console.log(res.data);
     dispatch({
       type: MAKE_APPOINTMENT,
-      payload: res.data,
+      payload: formData,
     });
   } catch (err) {
     console.log(err);

@@ -10,11 +10,11 @@ import MetaData from "../components/DashboardComponents/MetaData";
 
 const Dashboard = ({ getAllDoctors, patient: { doctors }, user }) => {
   let history = useHistory();
-  useEffect(() => {
-    if (user && user.data.role === "doctor") {
-      history.push("/doctor/dashboard");
-    }
-  }, []);
+  //   useEffect(() => {
+  //     if (user && user.data.role === "doctor") {
+  //       history.push("/doctor/dashboard");
+  //     }
+  //   }, []);
   useEffect(() => {
     getAllDoctors();
     console.log(doctors);

@@ -24,7 +24,12 @@ const DoctorCard = ({
           <div class="flex justify-center py-3 my-4 mx-12 border-t border-b">
             <button
               onClick={() => {
-                history.push(`/makeappointment/${doctorId}`);
+                history.push({
+                  pathname: `/makeappointment/${doctorId}`,
+                  state: {
+                    name,
+                  },
+                });
               }}
               class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-5 py-2 inline-block text-blue-100 hover:text-white rounded"
             >

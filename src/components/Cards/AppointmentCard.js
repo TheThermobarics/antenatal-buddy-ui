@@ -1,7 +1,7 @@
 import React from "react";
 
 const AppointmentCard = ({
-  appointment: { date, time, reason, doctor, approved },
+  appointment: { date, time, reason, doctor, approved, name },
 }) => {
   return (
     <div className="mb-5">
@@ -35,9 +35,11 @@ const AppointmentCard = ({
         <h2 className="text-white text-2xl font-bold leading-tight mb-3 pr-5">
           {reason}
         </h2>
-        <h2 className="text-white text-2xl font-bold leading-tight mb-3 pr-5">
-          Hospital&nbsp;: {doctor.hospital}
-        </h2>
+        {doctor && doctor.hospital && (
+          <h2 className="text-white text-2xl font-bold leading-tight mb-3 pr-5">
+            Hospital&nbsp;: {doctor.hospital}
+          </h2>
+        )}
         <div className="flex w-full items-center text-sm text-gray-300 font-medium">
           <div className="flex-1 flex items-center">
             <div
@@ -48,7 +50,7 @@ const AppointmentCard = ({
                 backgroundSize: "cover",
               }}
             ></div>
-            <div>{doctor.name}</div>
+            {doctor && doctor.name ? <div>{doctor.name}</div> : name}
           </div>
         </div>
       </a>

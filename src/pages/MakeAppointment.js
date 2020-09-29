@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { makeAppointment } from "../actions/patient";
 import Navbar from "../components/DashboardComponents/Navbar";
 
-const MakeAppointment = ({ match, makeAppointment, user }) => {
+const MakeAppointment = ({ match, makeAppointment, user, location }) => {
   let history = useHistory();
   const [formData, setFormData] = useState({
     date: "",
@@ -30,6 +30,7 @@ const MakeAppointment = ({ match, makeAppointment, user }) => {
       reason,
       doctor: match.params.docid,
       patient: user.data._id,
+      name: location.state.name,
     });
     history.push("/dashboard");
   };
