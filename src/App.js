@@ -16,6 +16,8 @@ import store from "./store";
 
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
+import AncVisit from "./pages/AncVisit";
+import EnterVisitDetails from "./pages/EnterVisitDetails";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -48,6 +50,12 @@ function App() {
           exact
           path="/makeappointment/:docid"
           component={MakeAppointment}
+        />
+        <PrivateRoute exact path="/ancVisit" component={AncVisit} />
+        <PrivateRoute
+          exact
+          path="/enterVisitDetails"
+          component={EnterVisitDetails}
         />
       </Router>
     </Provider>

@@ -1,10 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const PrescriptionCard = () => {
+  let history = useHistory();
   return (
     <div>
       <a
-        href="#"
+        href=""
         class="flex w-full transform transition-all duration-300 scale-100 hover:scale-95"
       >
         <div
@@ -17,7 +19,7 @@ const PrescriptionCard = () => {
         <div class="pl-3 w-3/5 ">
           <p class="text-xs text-gray-500 uppercase font-semibold">Date</p>
           <h3 class="text-md font-semibold leading-tight mb-3">
-            Treatment Description
+            Current Visit Number: 3
           </h3>
           <div class="flex w-full items-center text-xs text-gray-500 font-medium">
             <div
@@ -30,6 +32,23 @@ const PrescriptionCard = () => {
             ></div>
             <div>Doctor Name</div>
           </div>
+        </div>
+        <div className="mt-2 mr-3">
+          <button
+            onClick={() => {
+              history.push({
+                pathname: `/enterVisitDetails`,
+              });
+            }}
+            class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-5 py-2 inline-block text-blue-100 hover:text-white rounded"
+          >
+            Enter Visit Details
+          </button>
+        </div>
+        <div className="mt-2">
+          <button class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-5 py-2 inline-block text-blue-100 hover:text-white rounded">
+            View Previous Report
+          </button>
         </div>
       </a>
     </div>
