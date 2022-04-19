@@ -40,7 +40,7 @@ const Navbar = ({ logout }) => {
                   href="#"
                   class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                 >
-                  Reports
+                  ANC Visits
                 </a>
 
                 <a
@@ -54,7 +54,7 @@ const Navbar = ({ logout }) => {
                   href="#"
                   class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                 >
-                  Diagnosis
+                  Best Practices
                 </a>
               </div>
             </div>
@@ -90,7 +90,7 @@ const Navbar = ({ logout }) => {
                   >
                     <img
                       class="h-8 w-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src="https://i.imgur.com/8n5aFEo.png"
                       alt=""
                     />
                   </button>

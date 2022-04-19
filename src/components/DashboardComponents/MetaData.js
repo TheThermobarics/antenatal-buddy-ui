@@ -8,6 +8,10 @@ import PrescriptionCard from "../Cards/PrescriptionCard";
 import "./MetaData.css";
 
 const MetaData = ({ getAllAppointments, patient: { appointments }, user }) => {
+  const current = new Date();
+  const date = `${current.getDate()}/${
+    current.getMonth() + 1
+  }/${current.getFullYear()}`;
   useEffect(() => {
     if (user) {
       getAllAppointments(user.data._id);
@@ -25,7 +29,7 @@ const MetaData = ({ getAllAppointments, patient: { appointments }, user }) => {
             <div class="mb-3">
               <h1 class="text-3xl font-bold">Appointments</h1>
               <p class="text-sm text-gray-500 uppercase font-bold">
-                DATE : THURSDAY 6 AUGUST
+                DATE : {date}
               </p>
             </div>
 
@@ -34,13 +38,13 @@ const MetaData = ({ getAllAppointments, patient: { appointments }, user }) => {
                 <AppointmentCard appointment={appointment} />
               ))}
 
-            <div class="mb-3">
+            {/* <div class="mb-3">
               <h1 class="text-3xl font-bold">Prescriptions</h1>
             </div>
             <PrescriptionCard />
             <hr class="border-gray-200 my-3" />
             <PrescriptionCard />
-            <hr class="border-gray-200 my-3" />
+            <hr class="border-gray-200 my-3" /> */}
           </div>
         </div>
       </div>

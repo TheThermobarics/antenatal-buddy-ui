@@ -1,8 +1,10 @@
 import React from "react";
 
 const AppointmentCard = ({
-  appointment: { date, time, reason, doctor, approved, name },
+  appointment: { date, time, additionalInfo, helper, isApproved, name },
 }) => {
+  let newDateInDateFormat = new Date(date);
+  let stringDate = newDateInDateFormat.toString();
   return (
     <div className="mb-5">
       <a
@@ -18,26 +20,26 @@ const AppointmentCard = ({
           <div className="rounded-full bg-indigo-500 text-white text-xs py-1 pl-2 pr-3 leading-none">
             <i className="mdi mdi-fire text-base align-middle"></i>{" "}
             <span className="align-middle">
-              {approved ? "APPROVED" : "PENDING"}
+              {isApproved ? "APPROVED" : "PENDING"}
             </span>
           </div>
         </div>
         <div className="h-48"></div>
         <h2 className="text-white text-2xlleading-tight mb-3 pr-5">
-          Address: KMC
+          General Appointment
         </h2>
         <h2 className="text-white text-2xlleading-tight mb-3 pr-5">
-          Appointment Date : {date}
+          Appointment Date : {stringDate}
         </h2>
         <h2 className="text-white text-2xlleading-tight mb-3 pr-5">
           Time: {time}
         </h2>
         <h2 className="text-white text-2xl font-bold leading-tight mb-3 pr-5">
-          {reason}
+          {additionalInfo}
         </h2>
-        {doctor && doctor.hospital && (
+        {helper && helper.hospital && (
           <h2 className="text-white text-2xl font-bold leading-tight mb-3 pr-5">
-            Hospital&nbsp;: {doctor.hospital}
+            Hospital&nbsp;: {helper.hospital}
           </h2>
         )}
         <div className="flex w-full items-center text-sm text-gray-300 font-medium">
@@ -45,12 +47,11 @@ const AppointmentCard = ({
             <div
               className="rounded-full w-8 h-8 mr-3"
               style={{
-                background:
-                  "url(https://randomuser.me/api/portraits/women/74.jpg) center",
+                background: "url(https://i.imgur.com/DidT8Bm.png) center",
                 backgroundSize: "cover",
               }}
             ></div>
-            {doctor && doctor.name ? <div>{doctor.name}</div> : name}
+            {helper && helper.name ? <div>{helper.name}</div> : name}
           </div>
         </div>
       </a>

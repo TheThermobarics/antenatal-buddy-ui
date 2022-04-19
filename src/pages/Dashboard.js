@@ -21,7 +21,7 @@ const Dashboard = ({ getAllDoctors, patient: { doctors }, user, loadUser }) => {
     console.log(doctors);
   }, [getAllDoctors]);
 
-  if (user && user.data.role === "doctor") {
+  if (user && user.data.role === "helper") {
     return <Redirect to="/doctor/dashboard" />;
   }
 

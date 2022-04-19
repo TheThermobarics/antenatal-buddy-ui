@@ -16,7 +16,7 @@ export const getAllDoctors = () => async (dispatch) => {
   //     setAuthToken(localStorage.token);
   //   }
   try {
-    const res = await axios.get(API_BASE_URL + "users?role=doctor");
+    const res = await axios.get(API_BASE_URL + "users?role=helper");
     console.log(res.data);
     dispatch({
       type: GET_ALL_DOCTORS,
@@ -38,7 +38,7 @@ export const getAllDoctors = () => async (dispatch) => {
 export const getAllAppointments = (patientId) => async (dispatch) => {
   try {
     const res = await axios.get(
-      API_BASE_URL + `appointment?patient=${patientId}`
+      API_BASE_URL + `appointment?mother=${patientId}`
     );
     console.log(res.data);
     dispatch({

@@ -31,40 +31,64 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const register = ({ name, email, password, role = "patient" }) => async (
-  dispatch
-) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+export const register =
+  ({
+    name,
+    email,
+    password,
+    role = "mother",
+    age,
+    week,
+    specialization,
+    hospital,
+    aboutMe,
+  }) =>
+  async (dispatch) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-  const body = JSON.stringify({ name, email, password, role });
-
-  console.log(body);
-
-  try {
-    const res = await axios.post(API_BASE_URL + "auth/register", body, config);
-    console.log(res);
-    dispatch({
-      type: REGISTER_SUCCESS,
-      payload: res.data,
+    const body = JSON.stringify({
+      name,
+      email,
+      password,
+      role,
+      age,
+      weekOfPregnancy: week,
+      specialization,
+      hospital,
+      aboutMe,
     });
-    dispatch(loadUser());
-  } catch (err) {
-    console.log(err);
-    const errors = err.response.data.errors;
 
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    console.log(body);
+
+    try {
+      const res = await axios.post(
+        API_BASE_URL + "auth/register",
+        body,
+        config
+      );
+      console.log(res);
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: res.data,
+      });
+      dispatch(loadUser());
+    } catch (err) {
+      console.log(err);
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+
+      dispatch({
+        type: REGISTER_FAIL,
+      });
     }
-
-    dispatch({
-      type: REGISTER_FAIL,
-    });
-  }
-};
+  };
 
 export const login = (email, password) => async (dispatch) => {
   const config = {

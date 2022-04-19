@@ -10,26 +10,29 @@ const MakeAppointment = ({ match, makeAppointment, user, location }) => {
   const [formData, setFormData] = useState({
     date: "",
     time: "",
-    reason: "",
+    additionalInfo: "",
   });
 
-  const { date, time, reason } = formData;
+  const { date, time, additionalInfo } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log({ date, time, reason });
+    console.log({ date, time, additionalInfo });
     console.log(user.data._id);
     console.log(match.params.docid);
 
+    let splitDate = date.split("-");
+    let newDate = `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`;
+
     makeAppointment({
-      date,
+      date: newDate,
       time,
-      reason,
-      doctor: match.params.docid,
-      patient: user.data._id,
+      additionalInfo,
+      helper: match.params.docid,
+      mother: user.data._id,
       name: location.state.name,
     });
     history.push("/dashboard");
@@ -74,8 +77,8 @@ const MakeAppointment = ({ match, makeAppointment, user, location }) => {
                 className="appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
                 placeholder="Reason for the appointment..."
                 rows="5"
-                name="reason"
-                value={reason}
+                name="additionalInfo"
+                value={additionalInfo}
                 onChange={(e) => onChange(e)}
                 required
               ></textarea>

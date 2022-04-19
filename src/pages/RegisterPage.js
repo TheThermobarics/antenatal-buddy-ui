@@ -8,11 +8,25 @@ const RegisterPage = ({ register, isAuthenticated }) => {
     name: "",
     email: "",
     password: "",
+    age: 18,
+    week: 1,
+    specialization: "",
+    hospital: "",
+    aboutMe: "",
   });
 
   const [isDoctor, setIsDoctor] = useState(false);
 
-  const { name, email, password } = formData;
+  const {
+    name,
+    email,
+    password,
+    age,
+    week,
+    specialization,
+    hospital,
+    aboutMe,
+  } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,11 +34,31 @@ const RegisterPage = ({ register, isAuthenticated }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (isDoctor) {
-      register({ name, email, password, role: "doctor" });
+      register({
+        name,
+        email,
+        password,
+        role: "helper",
+        age,
+        week: 0,
+        specialization,
+        hospital,
+        aboutMe,
+      });
     } else {
-      register({ name, email, password });
+      register({
+        name,
+        email,
+        password,
+        role: "mother",
+        age,
+        week,
+        specialization,
+        hospital,
+        aboutMe,
+      });
     }
-    console.log({ name, email, password, isDoctor });
+    console.log({ name, email, password, isDoctor, age, week });
   };
 
   if (isAuthenticated) {
@@ -65,9 +99,7 @@ const RegisterPage = ({ register, isAuthenticated }) => {
                   </g>
                 </g>
               </svg>
-              <span className="text-sm">
-                Manipal Academy of Higher Education
-              </span>
+              <span className="text-sm">Cisco</span>
             </div>
             <div className="flex items-center mt-5">
               <svg
@@ -212,6 +244,110 @@ const RegisterPage = ({ register, isAuthenticated }) => {
               </div>
             </div>
 
+            {!isDoctor && (
+              <div className="flex flex-wrap -mx-3 mb-6">
+                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                  <label
+                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    htmlFor="grid-first-name"
+                  >
+                    Age
+                  </label>
+                  <input
+                    type="text"
+                    onChange={(e) => onChange(e)}
+                    className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-first-name"
+                    placeholder="Age"
+                    name="age"
+                    value={age}
+                    required
+                  />
+                </div>
+                <div className="w-full md:w-1/2 px-3">
+                  <label
+                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    htmlFor="grid-last-name"
+                  >
+                    Week of pregnancy
+                  </label>
+                  <input
+                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-last-name"
+                    type="number"
+                    placeholder="1"
+                    name="week"
+                    value={week}
+                    onChange={(e) => onChange(e)}
+                    required
+                  />
+                </div>
+              </div>
+            )}
+
+            {isDoctor && (
+              <div className="flex flex-wrap -mx-3 mb-6">
+                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                  <label
+                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    htmlFor="grid-first-name"
+                  >
+                    Specialization
+                  </label>
+                  <input
+                    type="text"
+                    onChange={(e) => onChange(e)}
+                    className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="grid-first-name"
+                    placeholder="Specialization"
+                    name="specialization"
+                    value={specialization}
+                    required
+                  />
+                </div>
+                <div className="w-full md:w-1/2 px-3">
+                  <label
+                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    htmlFor="grid-last-name"
+                  >
+                    Hospital
+                  </label>
+                  <input
+                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-last-name"
+                    type="text"
+                    placeholder="1"
+                    name="hospital"
+                    value={hospital}
+                    onChange={(e) => onChange(e)}
+                    required
+                  />
+                </div>
+              </div>
+            )}
+
+            {isDoctor && (
+              <div className="flex flex-wrap -mx-3 mb-6">
+                <div className="w-full px-3">
+                  <label
+                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="grid-password"
+                  >
+                    About Me
+                  </label>
+                  <input
+                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-email"
+                    type="text"
+                    placeholder="short description"
+                    name="aboutMe"
+                    value={aboutMe}
+                    onChange={(e) => onChange(e)}
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="flex justify-between w-full px-3">
                 <div className="md:flex md:items-center">
@@ -227,7 +363,7 @@ const RegisterPage = ({ register, isAuthenticated }) => {
                       className="mr-2 leading-tight"
                       type="checkbox"
                     />
-                    <span className="text-sm">I am a Doctor</span>
+                    <span className="text-sm">I am a Doctor/Helper</span>
                   </label>
                 </div>
                 <button
