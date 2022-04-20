@@ -8,6 +8,7 @@ import {
   GET_APPOINTMENTS,
   GET_APPOINTMENTS_FAIL,
   MAKE_APPOINTMENT_FAIL,
+  GET_DOCTOR_WISE_VISITS,
 } from "./types";
 // import setAuthToken from "../utils/setAuthToken";
 
@@ -38,7 +39,7 @@ export const getAllDoctors = () => async (dispatch) => {
 export const getAllAppointments = (patientId) => async (dispatch) => {
   try {
     const res = await axios.get(
-      API_BASE_URL + `appointment?mother=${patientId}`
+      API_BASE_URL + `appointment?mother=${patientId}&sort=date`
     );
     console.log(res.data);
     dispatch({
@@ -65,6 +66,201 @@ export const makeAppointment = (formData) => async (dispatch) => {
     dispatch({
       type: MAKE_APPOINTMENT,
       payload: formData,
+    });
+    dispatch(getAllAppointments(formData.mother));
+  } catch (err) {
+    console.log(err);
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+    // dispatch({
+    //   type: MAKE_APPOINTMENT_FAIL,
+    // });
+  }
+};
+
+export const create1stMedicalVisit =
+  (
+    mother,
+    helper,
+    dateOfVisit,
+    pallor,
+    pulse,
+    rr,
+    bp,
+    weight,
+    labInvestigationsImg
+  ) =>
+  async (dispatch) => {
+    console.log({
+      mother,
+      helper,
+      dateOfVisit,
+      pallor,
+      pulse,
+      rr,
+      bp,
+      weight,
+      labInvestigationsImg,
+    });
+    try {
+      const res = await axios.post(API_BASE_URL + "medicalVisit", {
+        mother,
+        helper,
+        dateOfVisit,
+        pallor,
+        pulse,
+        rr,
+        bp,
+        weight,
+        labInvestigationsImg,
+      });
+      console.log(res.data);
+      // dispatch({
+      //   type: MAKE_APPOINTMENT,
+      //   payload: formData,
+      // });
+      dispatch(getDoctorWiseVisits(mother));
+    } catch (err) {
+      console.log(err);
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+      // dispatch({
+      //   type: MAKE_APPOINTMENT_FAIL,
+      // });
+    }
+  };
+
+export const create2ndMedicalVisit =
+  (mother, helper, dateOfVisit, sfhMeasurement, weight, labInvestigationsImg) =>
+  async (dispatch) => {
+    try {
+      const res = await axios.post(API_BASE_URL + "medicalVisit", {
+        mother,
+        helper,
+        dateOfVisit,
+        sfhMeasurement,
+        weight,
+        labInvestigationsImg,
+      });
+      console.log(res.data);
+      // dispatch({
+      //   type: MAKE_APPOINTMENT,
+      //   payload: formData,
+      // });
+      dispatch(getDoctorWiseVisits(mother));
+    } catch (err) {
+      console.log(err);
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+      // dispatch({
+      //   type: MAKE_APPOINTMENT_FAIL,
+      // });
+    }
+  };
+
+export const create3rdMedicalVisit =
+  (
+    mother,
+    helper,
+    dateOfVisit,
+    preeclampsia,
+    anemia,
+    IUGR,
+    weight,
+    labInvestigationsImg
+  ) =>
+  async (dispatch) => {
+    console.table({
+      mother,
+      helper,
+      dateOfVisit,
+      preeclampsia,
+      anemia,
+      IUGR,
+      weight,
+      labInvestigationsImg,
+    });
+    try {
+      const res = await axios.post(API_BASE_URL + "medicalVisit", {
+        mother,
+        helper,
+        dateOfVisit,
+        preeclampsia,
+        anemia,
+        IUGR,
+        weight,
+        labInvestigationsImg,
+      });
+      console.log(res.data);
+      // dispatch({
+      //   type: MAKE_APPOINTMENT,
+      //   payload: formData,
+      // });
+      dispatch(getDoctorWiseVisits(mother));
+    } catch (err) {
+      console.log(err);
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+      // dispatch({
+      //   type: MAKE_APPOINTMENT_FAIL,
+      // });
+    }
+  };
+
+export const create4thMedicalVisit =
+  (mother, helper, dateOfVisit, foetalPosition, weight, birthPlanImage) =>
+  async (dispatch) => {
+    try {
+      const res = await axios.post(API_BASE_URL + "medicalVisit", {
+        mother,
+        helper,
+        dateOfVisit,
+        foetalPosition,
+        weight,
+        birthPlanImage,
+        foetalLie: "some value ",
+      });
+      console.log(res.data);
+      // dispatch({
+      //   type: MAKE_APPOINTMENT,
+      //   payload: formData,
+      // });
+      dispatch(getDoctorWiseVisits(mother));
+    } catch (err) {
+      console.log(err);
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+      // dispatch({
+      //   type: MAKE_APPOINTMENT_FAIL,
+      // });
+    }
+  };
+
+export const getDoctorWiseVisits = (motherId) => async (dispatch) => {
+  try {
+    const res = await axios.post(
+      API_BASE_URL + "medicalVisit/doctorWiseVisit",
+      { motherId }
+    );
+    console.log(res.data);
+    dispatch({
+      type: GET_DOCTOR_WISE_VISITS,
+      payload: res.data,
     });
   } catch (err) {
     console.log(err);

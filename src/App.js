@@ -54,7 +54,7 @@ function App() {
         <PrivateRoute exact path="/ancVisit" component={AncVisit} />
         <PrivateRoute
           exact
-          path="/enterVisitDetails"
+          path="/enterVisitDetails/:docid"
           component={EnterVisitDetails}
         />
       </Router>

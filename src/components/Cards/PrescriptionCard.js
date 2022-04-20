@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const PrescriptionCard = () => {
+const PrescriptionCard = ({ doctorName, doctorId, visitNumber, patientId }) => {
   let history = useHistory();
   return (
     <div>
@@ -19,7 +19,7 @@ const PrescriptionCard = () => {
         <div class="pl-3 w-3/5 ">
           <p class="text-xs text-gray-500 uppercase font-semibold">Date</p>
           <h3 class="text-md font-semibold leading-tight mb-3">
-            Current Visit Number: 3
+            Current Visit Number: {visitNumber}
           </h3>
           <div class="flex w-full items-center text-xs text-gray-500 font-medium">
             <div
@@ -30,22 +30,27 @@ const PrescriptionCard = () => {
                 backgroundSize: "cover",
               }}
             ></div>
-            <div>Doctor Name</div>
+            <div>Doctor: {doctorName}</div>
           </div>
         </div>
-        <div className="mt-2 mr-3">
+        <div className="mt-2 ml-3">
           <button
+            disabled={visitNumber > 3}
             onClick={() => {
               history.push({
-                pathname: `/enterVisitDetails`,
+                pathname: `/enterVisitDetails/${doctorId}`,
+                state: {
+                  visitNumber,
+                  patientId,
+                },
               });
             }}
             class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-5 py-2 inline-block text-blue-100 hover:text-white rounded"
           >
-            Enter Visit Details
+            {visitNumber > 3 ? "All Visits Complete" : "Enter Visit Details"}
           </button>
         </div>
-        <div className="mt-2">
+        <div className="mt-2 ml-3">
           <button class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-5 py-2 inline-block text-blue-100 hover:text-white rounded">
             View Previous Report
           </button>

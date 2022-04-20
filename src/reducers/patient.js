@@ -5,17 +5,21 @@ import {
   GET_APPOINTMENTS_FAIL,
   MAKE_APPOINTMENT,
   CLEAR_APPOINTMENTS,
+  GET_DOCTOR_WISE_VISITS,
 } from "../actions/types";
 
 const initialState = {
   doctors: null,
   appointments: [],
+  medicalVisits: [],
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case GET_DOCTOR_WISE_VISITS:
+      return { ...state, medicalVisits: [...payload.data] };
     case GET_ALL_DOCTORS:
       console.log("---------------");
       console.log(payload.data);

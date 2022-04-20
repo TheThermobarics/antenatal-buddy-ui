@@ -1,7 +1,12 @@
 import axios from "axios";
 import { API_BASE_URL } from "./../constants";
 import { setAlert } from "./alert";
-import { GET_HELPER_APPOINTMENTS, GET_HELPER_APPOINTMENTS_FAIL } from "./types";
+import {
+  GET_HELPER_APPOINTMENTS,
+  GET_HELPER_APPOINTMENTS_FAIL,
+  GET_HELPER_ANC_VISITS,
+  GET_HELPER_ANC_VISITS_FAIL,
+} from "./types";
 
 export const getAllAppointmentsForDoctor = (helperId) => async (dispatch) => {
   try {
@@ -22,6 +27,29 @@ export const getAllAppointmentsForDoctor = (helperId) => async (dispatch) => {
     }
     dispatch({
       type: GET_HELPER_APPOINTMENTS_FAIL,
+    });
+  }
+};
+
+export const getAllVisitsForDoctor = (helperId) => async (dispatch) => {
+  try {
+    const res = await axios.get(
+      API_BASE_URL + `medicalVisit?helper=${helperId}`
+    );
+    console.log(res.data);
+    dispatch({
+      type: GET_HELPER_ANC_VISITS,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+    dispatch({
+      type: GET_HELPER_ANC_VISITS_FAIL,
     });
   }
 };

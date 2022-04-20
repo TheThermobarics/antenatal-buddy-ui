@@ -8,7 +8,7 @@ const AppointmentCard = ({
   return (
     <div className="mb-5">
       <a
-        href="#"
+        href=""
         className="block rounded-lg relative p-5 transform transition-all duration-300 scale-100 hover:scale-95"
         style={{
           backgroundColor: "#2D3748",
