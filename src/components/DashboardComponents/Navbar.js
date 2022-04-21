@@ -26,7 +26,7 @@ const InactiveNav = ({ routeTo, innerText }) => {
   );
 };
 
-const Navbar = ({ logout, selectedRoute }) => {
+const Navbar = ({ logout, selectedRoute, isDoctor = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(true);
 
@@ -49,18 +49,26 @@ const Navbar = ({ logout, selectedRoute }) => {
                 ) : (
                   <InactiveNav routeTo="/dashboard" innerText="Dashboard" />
                 )}
-                {selectedRoute === "doctors" ? (
-                  <ActiveNav routeTo="/dashboard/doctors" innerText="Doctors" />
-                ) : (
-                  <InactiveNav
-                    routeTo="/dashboard/doctors"
-                    innerText="Doctors"
-                  />
-                )}
-                {selectedRoute === "visit" ? (
-                  <ActiveNav routeTo="/ancVisit" innerText="ANC Visits" />
-                ) : (
-                  <InactiveNav routeTo="/ancVisit" innerText="ANC Visits" />
+
+                {!isDoctor && (
+                  <>
+                    {selectedRoute === "doctors" ? (
+                      <ActiveNav
+                        routeTo="/dashboard/doctors"
+                        innerText="Doctors"
+                      />
+                    ) : (
+                      <InactiveNav
+                        routeTo="/dashboard/doctors"
+                        innerText="Doctors"
+                      />
+                    )}
+                    {selectedRoute === "visit" ? (
+                      <ActiveNav routeTo="/ancVisit" innerText="ANC Visits" />
+                    ) : (
+                      <InactiveNav routeTo="/ancVisit" innerText="ANC Visits" />
+                    )}
+                  </>
                 )}
 
                 {/* <Link
