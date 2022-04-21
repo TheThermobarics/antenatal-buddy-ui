@@ -123,7 +123,7 @@ const DoctorDashboard = ({
   }
   return (
     <>
-      <Navbar />
+      <Navbar selectedRoute="dashboard" />
       <div class="antialiased font-sans bg-gray-200">
         <div class="container mx-auto px-4 sm:px-8">
           <div class="py-8">

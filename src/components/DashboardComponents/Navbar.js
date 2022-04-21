@@ -4,7 +4,29 @@ import { Transition } from "@tailwindui/react";
 import { logout } from "../../actions/auth";
 import { connect } from "react-redux";
 
-const Navbar = ({ logout }) => {
+const ActiveNav = ({ routeTo, innerText }) => {
+  return (
+    <Link
+      to={routeTo}
+      class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
+    >
+      {innerText}
+    </Link>
+  );
+};
+
+const InactiveNav = ({ routeTo, innerText }) => {
+  return (
+    <Link
+      to={routeTo}
+      class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+    >
+      {innerText}
+    </Link>
+  );
+};
+
+const Navbar = ({ logout, selectedRoute }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(true);
 
@@ -22,7 +44,26 @@ const Navbar = ({ logout }) => {
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <Link
+                {selectedRoute === "dashboard" ? (
+                  <ActiveNav routeTo="/dashboard" innerText="Dashboard" />
+                ) : (
+                  <InactiveNav routeTo="/dashboard" innerText="Dashboard" />
+                )}
+                {selectedRoute === "doctors" ? (
+                  <ActiveNav routeTo="/dashboard/doctors" innerText="Doctors" />
+                ) : (
+                  <InactiveNav
+                    routeTo="/dashboard/doctors"
+                    innerText="Doctors"
+                  />
+                )}
+                {selectedRoute === "visit" ? (
+                  <ActiveNav routeTo="/ancVisit" innerText="ANC Visits" />
+                ) : (
+                  <InactiveNav routeTo="/ancVisit" innerText="ANC Visits" />
+                )}
+
+                {/* <Link
                   to="/dashboard"
                   class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
                 >
@@ -41,9 +82,9 @@ const Navbar = ({ logout }) => {
                   class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                 >
                   ANC Visits
-                </Link>
+                </Link> */}
 
-                <a
+                {/* <a
                   href="#"
                   class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                 >
@@ -55,7 +96,7 @@ const Navbar = ({ logout }) => {
                   class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                 >
                   Best Practices
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

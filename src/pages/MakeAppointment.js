@@ -39,7 +39,7 @@ const MakeAppointment = ({ match, makeAppointment, user, location }) => {
   };
   return (
     <>
-      <Navbar />
+      <Navbar selectedRoute="dashboard" />
       <section className="py-12 px-4">
         <h2 className="text-3xl mb-8 text-center font-heading">
           Schedule an Appointment
