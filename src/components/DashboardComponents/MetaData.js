@@ -2,12 +2,20 @@ import React, { useEffect } from "react";
 import { getAllAppointments } from "../../actions/patient";
 import { connect } from "react-redux";
 
+import { KEYS } from "../../i18nProvider/constants";
+import { getTranslatedMessage } from "../../i18nProvider/messages";
+
 import AppointmentCard from "../Cards/AppointmentCard";
 import PrescriptionCard from "../Cards/PrescriptionCard";
 
 import "./MetaData.css";
 
-const MetaData = ({ getAllAppointments, patient: { appointments }, user }) => {
+const MetaData = ({
+  language,
+  getAllAppointments,
+  patient: { appointments },
+  user,
+}) => {
   const current = new Date();
   const date = `${current.getDate()}/${
     current.getMonth() + 1
@@ -27,9 +35,11 @@ const MetaData = ({ getAllAppointments, patient: { appointments }, user }) => {
         >
           <div class="bg-white h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
             <div class="mb-3">
-              <h1 class="text-3xl font-bold">Appointments</h1>
+              <h1 class="text-3xl font-bold">
+                {getTranslatedMessage(language, KEYS.APPOINTMENTS_HEADING)}
+              </h1>
               <p class="text-sm text-gray-500 uppercase font-bold">
-                DATE : {date}
+                {getTranslatedMessage(language, KEYS.DATE_HEADING)} : {date}
               </p>
             </div>
 
@@ -55,6 +65,7 @@ const MetaData = ({ getAllAppointments, patient: { appointments }, user }) => {
 const mapStateToProps = (state) => ({
   patient: state.patient,
   user: state.auth.user,
+  language: state.auth.language,
 });
 
 export default connect(mapStateToProps, { getAllAppointments })(MetaData);

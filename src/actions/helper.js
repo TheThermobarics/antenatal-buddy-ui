@@ -6,6 +6,7 @@ import {
   GET_HELPER_APPOINTMENTS_FAIL,
   GET_HELPER_ANC_VISITS,
   GET_HELPER_ANC_VISITS_FAIL,
+  SET_LANGUAGE_SELECTED,
 } from "./types";
 
 export const getAllAppointmentsForDoctor = (helperId) => async (dispatch) => {
@@ -52,4 +53,13 @@ export const getAllVisitsForDoctor = (helperId) => async (dispatch) => {
       type: GET_HELPER_ANC_VISITS_FAIL,
     });
   }
+};
+
+export const setLanguageSelected = (selectedLanguage) => async (dispatch) => {
+  console.log("in action");
+  console.log(selectedLanguage);
+  dispatch({
+    type: SET_LANGUAGE_SELECTED,
+    payload: selectedLanguage,
+  });
 };

@@ -6,19 +6,31 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  SET_LANGUAGE_SELECTED,
 } from "../actions/types";
+
+import { LOCALES } from "../i18nProvider";
 
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
   loading: true,
   user: null,
+  language: LOCALES.ENGLISH_US,
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case SET_LANGUAGE_SELECTED:
+      console.log("reducer");
+      console.log(payload);
+
+      return {
+        ...state,
+        language: payload,
+      };
     case USER_LOADED:
       return {
         ...state,

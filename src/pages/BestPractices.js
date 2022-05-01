@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import Navbar from "../components/DashboardComponents/Navbar";
 
@@ -27,6 +28,7 @@ const bestPracticesData = [
 ];
 
 const BestPractices = () => {
+  let history = useHistory();
   return (
     <>
       <Navbar selectedRoute="practices" />
@@ -68,7 +70,19 @@ const BestPractices = () => {
                         </span>
                         <h3>
                           <a
-                            href=""
+                            style={{ cursor: "pointer" }}
+                            onClick={() => {
+                              history.push({
+                                pathname: `/practice`,
+                                state: {
+                                  img: el.img,
+                                  date: el.date,
+                                  heading: el.heading,
+                                  caption: el.caption,
+                                  body: el.bodyText,
+                                },
+                              });
+                            }}
                             className="
                         font-semibold
                         text-xl

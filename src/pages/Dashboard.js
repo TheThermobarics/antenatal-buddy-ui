@@ -4,6 +4,9 @@ import { loadUser } from "../actions/auth";
 import { connect } from "react-redux";
 import { useHistory, Redirect } from "react-router-dom";
 
+import { KEYS } from "../i18nProvider/constants";
+import { getTranslatedMessage } from "../i18nProvider/messages";
+
 import Navbar from "../components/DashboardComponents/Navbar";
 
 import DoctorCard from "./../components/Cards/DoctorCard";
@@ -23,7 +26,13 @@ const getWeekDifference = (pregnancyWeek) => {
   } else return 0;
 };
 
-const Dashboard = ({ getAllDoctors, patient: { doctors }, user, loadUser }) => {
+const Dashboard = ({
+  language,
+  getAllDoctors,
+  patient: { doctors },
+  user,
+  loadUser,
+}) => {
   let history = useHistory();
   const NOW_IN_MS = new Date().getTime();
   useEffect(() => {
@@ -48,7 +57,7 @@ const Dashboard = ({ getAllDoctors, patient: { doctors }, user, loadUser }) => {
         <header class="bg-white shadow">
           <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-bold leading-tight text-gray-900">
-              Dashboard
+              {getTranslatedMessage(language, KEYS.DASHBOARD_HEADING)}
             </h1>
           </div>
         </header>
@@ -57,12 +66,12 @@ const Dashboard = ({ getAllDoctors, patient: { doctors }, user, loadUser }) => {
             <div class="px-4 py-6 sm:px-0">
               <section class="pt-8 px-4 pb-4">
                 <h2 class="text-4xl mb-2 leading-tight font-heading">
-                  Top Doctors
+                  {getTranslatedMessage(language, KEYS.TOP_DOCTORS)}
                 </h2>
                 <p class="max-w-xl mb-8 text-gray-500">
                   {doctors !== null
-                    ? "Book an appointment with the following or search for the ones that suit your medical needs"
-                    : "Loading top doctors...."}
+                    ? getTranslatedMessage(language, KEYS.NO_DOCTORS)
+                    : getTranslatedMessage(language, KEYS.LOADING_DOCTORS)}
                 </p>
                 <div class="flex flex-wrap -mx-4 text-center">
                   {doctors !== null &&
@@ -84,7 +93,10 @@ const Dashboard = ({ getAllDoctors, patient: { doctors }, user, loadUser }) => {
                 <>
                   <section class="pt-8 px-4 pb-4">
                     <h2 class="text-4xl ml-2 mb-2 leading-tight font-heading">
-                      Next ANC Visit Counter
+                      {getTranslatedMessage(
+                        language,
+                        KEYS.NEXT_ANC_VISIT_COUNTER
+                      )}
                     </h2>
                     <CountDownTimer
                       targetDate={
@@ -112,6 +124,7 @@ const Dashboard = ({ getAllDoctors, patient: { doctors }, user, loadUser }) => {
 const mapStateToProps = (state) => ({
   patient: state.patient,
   user: state.auth.user,
+  language: state.auth.language,
 });
 
 export default connect(mapStateToProps, { getAllDoctors, loadUser })(Dashboard);

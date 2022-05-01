@@ -4,6 +4,9 @@ import { Transition } from "@tailwindui/react";
 import { logout } from "../../actions/auth";
 import { connect } from "react-redux";
 
+import { KEYS } from "../../i18nProvider/constants";
+import { getTranslatedMessage } from "../../i18nProvider/messages";
+
 const ActiveNav = ({ routeTo, innerText }) => {
   return (
     <Link
@@ -26,7 +29,7 @@ const InactiveNav = ({ routeTo, innerText }) => {
   );
 };
 
-const Navbar = ({ logout, selectedRoute, isDoctor = false }) => {
+const Navbar = ({ language, logout, selectedRoute, isDoctor = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(true);
 
@@ -45,9 +48,21 @@ const Navbar = ({ logout, selectedRoute, isDoctor = false }) => {
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
                 {selectedRoute === "dashboard" ? (
-                  <ActiveNav routeTo="/dashboard" innerText="Dashboard" />
+                  <ActiveNav
+                    routeTo="/dashboard"
+                    innerText={getTranslatedMessage(
+                      language,
+                      KEYS.DASHBOARD_HEADING
+                    )}
+                  />
                 ) : (
-                  <InactiveNav routeTo="/dashboard" innerText="Dashboard" />
+                  <InactiveNav
+                    routeTo="/dashboard"
+                    innerText={getTranslatedMessage(
+                      language,
+                      KEYS.DASHBOARD_HEADING
+                    )}
+                  />
                 )}
 
                 {!isDoctor && (
@@ -55,28 +70,69 @@ const Navbar = ({ logout, selectedRoute, isDoctor = false }) => {
                     {selectedRoute === "doctors" ? (
                       <ActiveNav
                         routeTo="/dashboard/doctors"
-                        innerText="Doctors"
+                        innerText={getTranslatedMessage(
+                          language,
+                          KEYS.DOCTORS_HEADING
+                        )}
                       />
                     ) : (
                       <InactiveNav
                         routeTo="/dashboard/doctors"
-                        innerText="Doctors"
+                        innerText={getTranslatedMessage(
+                          language,
+                          KEYS.DOCTORS_HEADING
+                        )}
                       />
                     )}
                     {selectedRoute === "visit" ? (
-                      <ActiveNav routeTo="/ancVisit" innerText="ANC Visits" />
+                      <ActiveNav
+                        routeTo="/ancVisit"
+                        innerText={getTranslatedMessage(
+                          language,
+                          KEYS.ANC_VISIT_HEADING
+                        )}
+                      />
                     ) : (
-                      <InactiveNav routeTo="/ancVisit" innerText="ANC Visits" />
+                      <InactiveNav
+                        routeTo="/ancVisit"
+                        innerText={getTranslatedMessage(
+                          language,
+                          KEYS.ANC_VISIT_HEADING
+                        )}
+                      />
                     )}
                     {selectedRoute === "practices" ? (
                       <ActiveNav
                         routeTo="/bestpractices"
-                        innerText="Best Practices"
+                        innerText={getTranslatedMessage(
+                          language,
+                          KEYS.BEST_PRACTICES
+                        )}
                       />
                     ) : (
                       <InactiveNav
                         routeTo="/bestpractices"
-                        innerText="Best Practices"
+                        innerText={getTranslatedMessage(
+                          language,
+                          KEYS.BEST_PRACTICES
+                        )}
+                      />
+                    )}
+                    {selectedRoute === "language" ? (
+                      <ActiveNav
+                        routeTo="/changeLanguage"
+                        innerText={getTranslatedMessage(
+                          language,
+                          KEYS.CHANGE_LANGUAGE
+                        )}
+                      />
+                    ) : (
+                      <InactiveNav
+                        routeTo="/changeLanguage"
+                        innerText={getTranslatedMessage(
+                          language,
+                          KEYS.CHANGE_LANGUAGE
+                        )}
                       />
                     )}
                   </>
@@ -322,4 +378,8 @@ const Navbar = ({ logout, selectedRoute, isDoctor = false }) => {
   );
 };
 
-export default connect(null, { logout })(Navbar);
+const mapStateToProps = (state) => ({
+  language: state.auth.language,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);
