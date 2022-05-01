@@ -2,7 +2,7 @@
 
 In the project directory run:
 
-### `npm start`
+### `npm install`
 
 ## Available Scripts
 
