@@ -1,6 +1,9 @@
 export const LOCALES = {
   ENGLISH_US: "en-us",
   HINDI_IN: "hi-in",
+  MARATHI_IN: "ma-in",
+  KANNADA_IN: "ka-in",
+  PUNJABI_IN: "pu-in",
 };
 
 export const KEYS = {

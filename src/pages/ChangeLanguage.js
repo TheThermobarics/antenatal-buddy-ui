@@ -64,6 +64,54 @@ const ChangeLanguage = ({ setLanguageSelected, language }) => {
                   </label>
                 </div>
                 <div className="flex items-center mb-4">
+                  <input
+                    id="country-option-3"
+                    type="radio"
+                    name="countries"
+                    defaultValue={LOCALES.MARATHI_IN}
+                    onClick={() => setLang(LOCALES.MARATHI_IN)}
+                    className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="country-option-2"
+                    className="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Marathi - India
+                  </label>
+                </div>
+                <div className="flex items-center mb-4">
+                  <input
+                    id="country-option-4"
+                    type="radio"
+                    name="countries"
+                    defaultValue={LOCALES.PUNJABI_IN}
+                    onClick={() => setLang(LOCALES.PUNJABI_IN)}
+                    className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="country-option-2"
+                    className="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Punjabi - India
+                  </label>
+                </div>
+                <div className="flex items-center mb-4">
+                  <input
+                    id="country-option-5"
+                    type="radio"
+                    name="countries"
+                    defaultValue={LOCALES.KANNADA_IN}
+                    onClick={() => setLang(LOCALES.KANNADA_IN)}
+                    className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="country-option-2"
+                    className="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Kannada - India
+                  </label>
+                </div>
+                <div className="flex items-center mb-4">
                   <button
                     onClick={() => submitForm()}
                     type="button"
