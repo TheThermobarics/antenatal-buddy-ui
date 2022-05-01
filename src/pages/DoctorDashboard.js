@@ -82,9 +82,9 @@ const VisitRow = ({ name, patientId, email, visitNumber }) => {
       <td class="border-grey-light border hover:bg-gray-100 p-3 truncate myTd">
         {visitNumber}
       </td>
-      <td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer myTd">
+      {/* <td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer myTd">
         View Report
-      </td>
+      </td> */}
     </tr>
   );
 };
@@ -192,9 +192,9 @@ const DoctorDashboard = ({
                     <th class="p-3 text-left myTh">Name</th>
                     <th class="p-3 text-left myTh">Email</th>
                     <th class="p-3 text-left myTh">Visit Number</th>
-                    <th class="p-3 text-left myTh" width="110px">
+                    {/* <th class="p-3 text-left myTh" width="110px">
                       Actions
-                    </th>
+                    </th> */}
                   </tr>
                 ))}
 

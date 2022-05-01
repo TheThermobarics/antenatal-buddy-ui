@@ -1,7 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const PrescriptionCard = ({ doctorName, doctorId, visitNumber, patientId }) => {
+const PrescriptionCard = ({
+  doctorName,
+  doctorId,
+  visitNumber,
+  patientId,
+  visitId,
+}) => {
   let history = useHistory();
   return (
     <div>
@@ -51,7 +57,19 @@ const PrescriptionCard = ({ doctorName, doctorId, visitNumber, patientId }) => {
           </button>
         </div>
         <div className="mt-2 ml-3">
-          <button class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-5 py-2 inline-block text-blue-100 hover:text-white rounded">
+          <button
+            disabled={visitNumber < 1}
+            onClick={() => {
+              history.push({
+                pathname: `/getVisitData/${visitId}`,
+                state: {
+                  visitNumber,
+                  visitId,
+                },
+              });
+            }}
+            class="cursor-pointer bg-gray-700 hover:bg-gray-600 shadow-xl px-5 py-2 inline-block text-blue-100 hover:text-white rounded"
+          >
             View Previous Report
           </button>
         </div>

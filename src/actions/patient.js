@@ -9,6 +9,7 @@ import {
   GET_APPOINTMENTS_FAIL,
   MAKE_APPOINTMENT_FAIL,
   GET_DOCTOR_WISE_VISITS,
+  GET_VISIT_BY_ID,
 } from "./types";
 // import setAuthToken from "../utils/setAuthToken";
 
@@ -260,6 +261,28 @@ export const getDoctorWiseVisits = (motherId) => async (dispatch) => {
     console.log(res.data);
     dispatch({
       type: GET_DOCTOR_WISE_VISITS,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+    // dispatch({
+    //   type: MAKE_APPOINTMENT_FAIL,
+    // });
+  }
+};
+
+export const getVisitById = (visitId) => async (dispatch) => {
+  try {
+    const res = await axios.get(API_BASE_URL + `medicalVisit?_id=${visitId}`);
+    console.log("Inside Action");
+    console.log(res.data);
+    dispatch({
+      type: GET_VISIT_BY_ID,
       payload: res.data,
     });
   } catch (err) {

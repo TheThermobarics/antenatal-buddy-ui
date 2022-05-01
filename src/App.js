@@ -18,6 +18,8 @@ import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 import AncVisit from "./pages/AncVisit";
 import EnterVisitDetails from "./pages/EnterVisitDetails";
+import VisitData from "./pages/VisitData";
+import BestPractices from "./pages/BestPractices";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -57,6 +59,12 @@ function App() {
           path="/enterVisitDetails/:docid"
           component={EnterVisitDetails}
         />
+        <PrivateRoute
+          exact
+          path="/getVisitData/:visitId"
+          component={VisitData}
+        />
+        <PrivateRoute exact path="/bestpractices" component={BestPractices} />
       </Router>
     </Provider>
   );

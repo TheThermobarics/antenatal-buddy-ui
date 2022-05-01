@@ -98,10 +98,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg leading-6 font-medium text-gray-900">
-                      Video consultation
+                      Booking ANC Visits
                     </h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Remote consultations to keep up with the covid times
+                      Ensures regular checkups are done
                     </p>
                   </div>
                 </div>
@@ -127,10 +127,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg leading-6 font-medium text-gray-900">
-                      E-Prescription
+                      Record Storage
                     </h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      An online paperless prescription service
+                      Paperless storage of reports
                     </p>
                   </div>
                 </div>
@@ -156,10 +156,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg leading-6 font-medium text-gray-900">
-                      Home Delivery of Drugs
+                      Reminders for ANC visits
                     </h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Get your medecines delivered to your doorstep
+                      To ensure all checkups are done
                     </p>
                   </div>
                 </div>
@@ -185,11 +185,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg leading-6 font-medium text-gray-900">
-                      Oral Health Awareness
+                      Best Practices
                     </h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
-                      Daily updates about oral hygiene along with the best
-                      practices by experienced doctors
+                      Updates regarding the best practices for antenatal care
                     </p>
                   </div>
                 </div>

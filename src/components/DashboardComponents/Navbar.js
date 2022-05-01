@@ -68,6 +68,17 @@ const Navbar = ({ logout, selectedRoute, isDoctor = false }) => {
                     ) : (
                       <InactiveNav routeTo="/ancVisit" innerText="ANC Visits" />
                     )}
+                    {selectedRoute === "practices" ? (
+                      <ActiveNav
+                        routeTo="/bestpractices"
+                        innerText="Best Practices"
+                      />
+                    ) : (
+                      <InactiveNav
+                        routeTo="/bestpractices"
+                        innerText="Best Practices"
+                      />
+                    )}
                   </>
                 )}
 

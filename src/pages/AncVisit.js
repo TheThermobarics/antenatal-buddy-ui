@@ -51,6 +51,7 @@ const AncVisit = ({
                     doctorId={visit.helper._id}
                     visitNumber={visit.visit.visitNumber}
                     patientId={user.data._id}
+                    visitId={visit.visit._id}
                   />
                   <hr class="border-gray-200 my-3" />
                 </>
