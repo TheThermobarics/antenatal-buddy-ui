@@ -100,7 +100,7 @@ const Dashboard = ({
                     </h2>
                     <CountDownTimer
                       targetDate={
-                        NOW_IN_MS +
+                        new Date(user.data.createdAt).getTime() +
                         getWeekDifference(user.data.weekOfPregnancy) *
                           7 *
                           24 *
